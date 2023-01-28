@@ -7,13 +7,13 @@
 | TeamID      |        Team-055        |
 | TeamName    |         ABCD           |
 | Captain     |       Rohan Gudipaty   |
-| Captain     |  rohanvg3@illinois.edu  |
-| Member1     |        Kevin Pei       |
-| Member1     |   kevin2@illinois.edu  |
-| Member2     |  Dattatreya Mohapatra  |
-| Member2     |   datta1@illinois.edu  |
-| Member3     |     Ti-Chung Cheng     |
-| Member3     |  tichung3@illinois.edu |
+| Captain     |  rohanvg3@illinois.edu |
+| Member1     |       Tianyue Cao      |
+| Member1     |    tc37@illinois.edu   |
+| Member2     |       Aditya Patel     |
+| Member2     |  apate508@illinois.edu |
+| Member3     |     Diego Villarroel   |
+| Member3     |  diegoas2@illinois.edu |
 
 ## Project Information
 
