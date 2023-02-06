@@ -44,12 +44,14 @@ What makes us different from other websites:
 8. Our data is the crimes that happened in Los Angeles from 2010 to the present. We collected our data from the Los Angeles Open Data website, which contains reliable information recorded by the Los Angeles police department. We will primarily use two tables from the website, the first one containing crime data from 2010 to 2019 (<https://data.lacity.org/Public-Safety/Crime-Data-from-2010-to-2019/63jg-8b9z>), and the second containing crime data from 2020 to present ([https://www.kaggle.com/datasets/susant4learning/crime-in-los-angeles-data-from-2020-t o-present](https://www.kaggle.com/datasets/susant4learning/crime-in-los-angeles-data-from-2020-to-present)).
 8. Users will be able to generate graphs based on the data provided in the merged database. Users can filter certain results and Choose the X and Y axis of the graph. We also provide the option to generate a report for any area, including its crime rate, dangerous subregions, police patrol advice, etc. For example, they can see how the number of crimes increases or decreases in a certain region during the 12-year interval.
 
-\- UI mockup:
+- UI mockup:
 
 ![](Aspose.Words.e10ec0ec-5029-4fbc-b267-2d9f36141b70.001.jpeg)
 
 Work distribution:
 
-Database creation: Aditya Patel / Rohan Gudipaty Backend (retrieve data from database): Aditya Patel Backend (send data to frontend): Rohan Gudipaty Frontend (graph): Tianyue Cao
-
+Database creation: Aditya Patel / Rohan Gudipaty 
+Backend (retrieve data from database): Aditya Patel 
+Backend (send data to frontend): Rohan Gudipaty 
+Frontend (graph): Tianyue Cao
 Frontend (area report): Diego Saavedra
