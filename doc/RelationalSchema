@@ -1,0 +1,73 @@
+RELATIONAL SCHEMA
+
+Crime(
+DRNO: INT [PK],
+ReportID: INT [FK to SelfReportCime.ReportID],
+DateRpt: DATE,
+DateOcc: DATE,
+TimeOcc: TIME,
+VictimAge: INT,
+VictimSex: VARCHAR(1),
+VictimDescent: VARCHAR(1),
+Location: VARCHAR(255),
+Lat: REAL,
+Long: REAL,
+RptDistNo: INT(4) [FK to SubArea.RptDistNo],
+CrimeCD: INT(3) [FK to CrimeType.CrimeCD],
+StatusCD: VARCHAR(2) [FK to Status.StatusCD],
+PremisCD: INT(3) [FK to Premis.PremisCD],
+WeaponCD: INT(3) [FK to WeaponInf.WeaponCD]
+)
+
+SelfReportCrime(
+ReportID: INT [PK], 
+DateRpt: DATETIME, 
+DateOcc: DATETIME, 
+TimeOcc: INT(4), VictimAge: INT, 
+VictimSex: VARCHAR(1), 
+VictimDescent: VARCHAR(1), 
+Location: VARCHAR(255), 
+Lat: REAL, 
+Long: REAL,
+AdminUsername: VARCHAR(20) [FK to Admin]
+)
+
+CrimeType(
+CrimeCD: INT(3) [PK], 
+CrimeDesc: VARCHAR(255)
+)
+
+Status(
+StatusCD: VARCHAR(2) [PK], 
+StatusDesc: VARCHAR(255)
+)
+
+Premis(
+PremisCD: INT(3) [PK], 
+PremisDesc: VARCHAR(100)
+)
+
+WeaponInfo(
+WeaponCD: INT(3) [PK], 
+WeaponDesc: VARCHAR(255)
+)
+
+Admin(
+Username: VARCHAR (20) [PK], 
+Password: VARCHAR (50)
+)
+
+Area(
+AreaID: INT(2) [PK], 
+AreaName: VARCHAR(100)
+)
+
+SubArea(
+RptDistNo: INT(4) [PK],
+AreaID: INT(2) [PK to Area.AreaID]
+)
+
+
+Relationship Descriptions:
+
+The entity Crime consists of a bunch of information regarding the crime with some relations to other entities. The foreign key RptDistNo connects to the entity SubArea that holds information regarding the specific sub-area where the crime happened. The foreign key CrimeCD gives the description of the actual crime i.e. how it happened/what happened and the key is located in the entity called CrimeType. The foreign key StatusCD connects to the entity Status that holds information regarding the current status of the case and how much progress has been made by the LAPD regarding the investigation. The foreign key PremisCD connects to the entity Premis that holds information regarding the specific type of location the incident took place in, for eg. a bus, cafe, or restaurant. The foreign key WeaponCD connects to the entity WeaponInfo that holds information regarding the specific weapon used to commit the crime whether that be hands, a gun, or a bullet. Lastly, the foreign key ReportID that is a part of the entity SelfReportCime tells us the one-to-one relationship between the potential reports and the ones that are already a part of the Crime entity i.e. which entries submitted by the citizens have been put in the database. The entity SubArea contains a foreign key to the Area entity, which is the AreaID that essentially gets the general area that the sub-area falls under. Lastly, the entity SelfReportCime has a foreign key called AdminUsername, which maps to the entity called Admin. The key that the foreign key maps to is called Username, which keeps track of the usernames of all the people that can accept or decline a crime reported by the citizens after conducting research on it. 
