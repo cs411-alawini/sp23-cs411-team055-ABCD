@@ -9,7 +9,6 @@ function GraphPage(props) {
             <Header navblocks={props.navblocks} current={1} />
             <section style={{ marginTop: "20px" }}>
                 <h2 style={{ fontSize: "24px", marginBottom: "10px" }}>Graph</h2>
-                
             </section>
         </div>
     );
