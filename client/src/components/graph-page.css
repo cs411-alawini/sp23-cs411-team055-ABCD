@@ -1,0 +1,19 @@
+#graph-page .contents {
+    margin: auto;
+    margin-top: 50px;
+    width: 1300px;
+}
+
+#graph-page .options {
+    float: left;
+    width: 330px;
+    height: 200px;
+    background-color: #dddddd;
+}
+
+#graph-page .graph {
+    float: right;
+    width: 900px;
+    height: 200px;
+    background-color: #dddddd;
+}
