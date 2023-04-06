@@ -20,7 +20,6 @@ const _filters = {
         list: []
     },
 }
-
 class Option extends React.Component {
     constructor(props) {
         super(props);
@@ -34,9 +33,9 @@ class Option extends React.Component {
             return <option key={index} value={value}>{value}</option>
         });
         return (
-            <div>
-                <span>{this.props.name}</span>
-                <select name={this.props.name}>
+            <div className="option-container">
+                <span className="option-label">{this.props.name}</span>
+                <select className="option-select" name={this.props.name}>
                     {list}
                 </select>
             </div>
@@ -101,7 +100,7 @@ class Graph extends React.Component {
 
 function GraphPage(props) {
     return (
-        <div style={{ backgroundColor: "#f5f5f5", padding: "20px" }}>
+        <div  className="graph-page">
             <Header navblocks={props.navblocks} current={1} />
             <div className="contents">
                 <Options />
