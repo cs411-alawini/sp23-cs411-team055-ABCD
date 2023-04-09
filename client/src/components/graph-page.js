@@ -9,14 +9,17 @@ import "./graph-page.css"
 const _filters = {
     "area": {
         type: "int",
+        name: "Area",
         list: [1, 2, 3, 4, 5, 6],
     },
     "startdate": {
         type: "date",
+        name: "Start date",
         list: [],
     },
     "enddate": {
         type: "date",
+        name: "End date",
         list: []
     },
 }
@@ -35,7 +38,7 @@ class Option extends React.Component {
         return (
             <div className="option-container">
                 <span className="option-label">{this.props.name}</span>
-                <select className="option-select" name={this.props.name}>
+                <select className="option-select" name={this.props.id}>
                     {list}
                 </select>
             </div>
@@ -65,7 +68,7 @@ class Options extends React.Component {
 
     render() {
         let filters = Object.entries(this.state.filter).map(([key, value], index) => {
-            return <Option key={index} name={key} choices={value.list}/>
+            return <Option key={index} id={key} name={value.name} choices={value.list}/>
         });
         let display = [
             <Option key={1} name={"X-axis"} choices={Object.keys(this.state.filter)} />,
@@ -100,15 +103,15 @@ class Graph extends React.Component {
 
 function GraphPage(props) {
     return (
-        <div  className="graph-page">
+        <div id="graph-page">
             <Header navblocks={props.navblocks} current={1} />
+            <section style={{ marginTop: "20px" }}>
+                <h2 style={{ fontSize: "24px", marginBottom: "10px" }}>Graph</h2>
+            </section>
             <div className="contents">
                 <Options />
                 <Graph />
             </div>
-            <section style={{ marginTop: "20px" }}>
-                <h2 style={{ fontSize: "24px", marginBottom: "10px" }}>Graph</h2>
-            </section>
         </div>
     );
 }
