@@ -35,10 +35,15 @@ app.get('/reportCrime', function(req,res) {
     if (err) {
       console.log(err)
     } else {
+      console.log(result)
       res.send(result)
     }
   })
 })
+
+app.put('/report', function(req, res) {
+
+});
 
 app.post('/report', function(req,res) {
   console.log(req.body);
@@ -95,28 +100,45 @@ app.post('/report', function(req,res) {
   */
 });
 
-app.get('/all', function(req, res) {
+app.post('/weaponsData', function(req, res) {
+
+console.log("Hey")
+console.log(req.body)
+
 var qr = `
-SELECT w.Weapon_Desc, count(w.Weapon_Used_Cd)/?*100
+SELECT w.Weapon_Desc, count(w.Weapon_Used_Cd)/?*100 as percentage
 from crime c natural join crimetype c1 natural join subarea s2 natural join weaponinfo w
-where s2.AREA_NAME = 'Central'
+where s2.AREA_NAME = ?
 group by w.Weapon_Used_Cd
 having 5 < count(c.DR_NO);
 `
 var before = `
 select count(w.Weapon_Used_Cd)
 from crime c natural join weaponinfo w natural join subarea s2
-where s2.AREA_NAME = 'Central';`
+where s2.AREA_NAME = ?`;
 
-db.query(before, (err, result) => {
+db.query(before, [req.body.inputValue] ,(err, result) => {
         if (err) {
             console.log(err)
         } else {
-            db.query(qr, [result], (err1, result1) => {
-            if (err1) {
+            console.log(result);
+            
+            var val = JSON.stringify(result[0]);
+            console.log(val);
+            var newValue = JSON.parse(val);
+            console.log(newValue);
+            var jsonValue = newValue['count(w.Weapon_Used_Cd)']
+            console.log(jsonValue);
+            db.query(qr, [jsonValue, req.body.inputValue] ,(err1, result1) => {
+              if (err1) {
                 console.log(err1)
-            } else {
+              } else {
+                console.log(result1);
                 res.send(result1);
-        }})}
+              }
+            }
+            
+          ) 
+        }
     });
 });
