@@ -40,6 +40,7 @@ root.render(
         <Route exact path="/admin" element={<Home navblocks={adminNavblocks} />}></Route>
         <Route exact path="/admin/process-crime" element={<ProcessCrimes navblocks={adminNavblocks} />}></Route>
         <Route exact path="/admin/process-crime/:id" element={<ProcessCrime navblocks={adminNavblocks} />}></Route>
+        <Route exact path="/adq1" element={<ADQ1 navblocks={navblocks} />}></Route>
         <Route exact path="*" element={<NotFound navblocks={navblocks} />}></Route>
       </Routes>
     </Router>
