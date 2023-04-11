@@ -21,6 +21,11 @@ let navblocks = [
   { link: "/report-crime", content: "Report Crime", },
 ];
 
+let adminNavblocks = [
+  { link: "/admin", content: "Home", },
+  { link: "/admin/process-crime", content: "Process User-report Crimes", },
+];
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
@@ -30,7 +35,8 @@ root.render(
         <Route exact path="/graph" element={<GraphPage navblocks={navblocks} />}></Route>
         <Route exact path="/area-report" element={<AreaReport navblocks={navblocks} />}></Route>
         <Route exact path="/report-crime" element={<ReportCrime navblocks={navblocks} />}></Route>
-        <Route exact path="/process-crime" element={<ProcessCrimes navblocks={navblocks} />}></Route>
+        <Route exact path="/admin" element={<Home navblocks={adminNavblocks} />}></Route>
+        <Route exact path="/admin/process-crime" element={<ProcessCrimes navblocks={adminNavblocks} />}></Route>
         {/* <Route exact path="/process-crime/:id" element={<ProcessCrime navblocks={navblocks} />}></Route> */}
         <Route exact path="*" element={<NotFound navblocks={navblocks} />}></Route>
       </Routes>

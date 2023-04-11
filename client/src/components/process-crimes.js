@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from "./header";
 
 class ProcessCrimes extends React.Component {
   constructor(props) {
@@ -33,7 +34,7 @@ class ProcessCrimes extends React.Component {
     let crimes = this.state.crimes.map((crime, index) => {
       return (
         <tr key={index}>
-          <td><Link to={`/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
+          <td><Link to={`/admin/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
           <td>{crime.daterpt}</td>
           <td>{crime.dateocc}</td>
           <td>{crime.crime}</td>
@@ -41,16 +42,15 @@ class ProcessCrimes extends React.Component {
         </tr>
       )
     });
-    // Not accessible to public
-    // Therefore no header
     return (
       <div id="process-crimes">
+        <Header navblocks={this.props.navblocks} current={1} />
         <section>List of crimes reported</section>
         <div>
           <table>
             <thead>
               <tr>
-                <td>Report ID</td>{/* TODO: link to `/process-crime/:reportid` page */}
+                <td>Report ID</td>
                 <td>Date reported</td>
                 <td>Date occurred</td>
                 <td>Crime type</td>
