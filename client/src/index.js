@@ -6,8 +6,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./components/home.js";
 import GraphPage from "./components/graph-page.js";
 import AreaReport from "./components/area-report.js";
-import NotFound from "./components/not-found.js";
 import ReportCrime from "./components/report-crime.js";
+import NotFound from "./components/not-found.js";
+
+import ProcessCrime from "./components/process-crime.js";
 import ProcessCrimes from "./components/process-crimes.js";
 
 // CSS
@@ -37,7 +39,7 @@ root.render(
         <Route exact path="/report-crime" element={<ReportCrime navblocks={navblocks} />}></Route>
         <Route exact path="/admin" element={<Home navblocks={adminNavblocks} />}></Route>
         <Route exact path="/admin/process-crime" element={<ProcessCrimes navblocks={adminNavblocks} />}></Route>
-        {/* <Route exact path="/process-crime/:id" element={<ProcessCrime navblocks={navblocks} />}></Route> */}
+        <Route exact path="/admin/process-crime/:id" element={<ProcessCrime navblocks={adminNavblocks} />}></Route>
         <Route exact path="*" element={<NotFound navblocks={navblocks} />}></Route>
       </Routes>
     </Router>

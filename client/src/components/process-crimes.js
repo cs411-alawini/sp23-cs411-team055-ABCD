@@ -34,14 +34,15 @@ class ProcessCrimes extends React.Component {
     let crimes = this.state.crimes.map((crime, index) => {
       return (
         <tr key={index}>
-          <td><Link to={`/admin/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
-          <td>{crime.daterpt}</td>
-          <td>{crime.dateocc}</td>
-          <td>{crime.crime}</td>
-          <td>{crime.description}</td>
+          <td><Link to={`/admin/process-crime/${crime.ReportID}`}>{crime.ReportID}</Link></td>
+          <td>{crime.LOCATION}</td>
+          <td>{crime.DATE_OCC}</td>
+          <td>{crime.Crime}</td>
+          <td>{crime.Description}</td>
         </tr>
       )
     });
+    console.log(crimes);
     return (
       <div id="process-crimes">
         <Header navblocks={this.props.navblocks} current={1} />
@@ -51,7 +52,7 @@ class ProcessCrimes extends React.Component {
             <thead>
               <tr>
                 <td>Report ID</td>
-                <td>Date reported</td>
+                <td>Location</td>
                 <td>Date occurred</td>
                 <td>Crime type</td>
                 <td>Description</td>{/* This should be a short description within one line. Use '...' if content too long */}
