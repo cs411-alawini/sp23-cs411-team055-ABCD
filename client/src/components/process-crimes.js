@@ -25,9 +25,9 @@ class ProcessCrimes extends React.Component {
   }
 
   componentDidMount() {
-    fetch(process.env.REACT_APP_SERVER_URL + "/reports")
+    fetch(process.env.REACT_APP_SERVER_URL + "/reportCrime")
       .then(data => data.json())
-      .then(data => this.setState({ crimes: data, }));
+      .then(data => { console.log(data); this.setState({ crimes: data, });});
   }
 
   render() {
