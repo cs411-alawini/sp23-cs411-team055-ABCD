@@ -7,7 +7,8 @@ import Home from "./components/home.js";
 import GraphPage from "./components/graph-page.js";
 import AreaReport from "./components/area-report.js";
 import NotFound from "./components/not-found.js";
-import ReportCrime from "./components/report-crime.js"
+import ReportCrime from "./components/report-crime.js";
+import ProcessCrimes from "./components/process-crimes.js";
 
 // CSS
 import "./fonts.css";
@@ -29,6 +30,8 @@ root.render(
         <Route exact path="/graph" element={<GraphPage navblocks={navblocks} />}></Route>
         <Route exact path="/area-report" element={<AreaReport navblocks={navblocks} />}></Route>
         <Route exact path="/report-crime" element={<ReportCrime navblocks={navblocks} />}></Route>
+        <Route exact path="/process-crime" element={<ProcessCrimes navblocks={navblocks} />}></Route>
+        {/* <Route exact path="/process-crime/:id" element={<ProcessCrime navblocks={navblocks} />}></Route> */}
         <Route exact path="*" element={<NotFound navblocks={navblocks} />}></Route>
       </Routes>
     </Router>

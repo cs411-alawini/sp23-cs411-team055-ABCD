@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./header";
+import { Link } from "react-router-dom";
 
 class ProcessCrimes extends React.Component {
   constructor(props) {
@@ -30,10 +30,10 @@ class ProcessCrimes extends React.Component {
   }
 
   render() {
-    this.crimes.map((crime, index) => {
+    let crimes = this.state.crimes.map((crime, index) => {
       return (
         <tr key={index}>
-          <td>{crime.reportid}</td>
+          <td><Link to={`/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
           <td>{crime.daterpt}</td>
           <td>{crime.dateocc}</td>
           <td>{crime.crime}</td>
@@ -48,16 +48,23 @@ class ProcessCrimes extends React.Component {
         <section>List of crimes reported</section>
         <div>
           <table>
-            <tr>
-              <td>Report ID</td>  {/* TODO: link to `/process-crime/:reportid` page */}
-              <td>Date reported</td>
-              <td>Date occurred</td>
-              <td>Crime type</td>
-              <td>Description</td>  {/* This should be a short description within one line. Use '...' if content too long */}
-            </tr>
+            <thead>
+              <tr>
+                <td>Report ID</td>{/* TODO: link to `/process-crime/:reportid` page */}
+                <td>Date reported</td>
+                <td>Date occurred</td>
+                <td>Crime type</td>
+                <td>Description</td>{/* This should be a short description within one line. Use '...' if content too long */}
+              </tr>
+            </thead>
+            <tbody>
+              {crimes}
+            </tbody>
           </table>
         </div>
       </div>
     );
   }
 }
+
+export default ProcessCrimes;
