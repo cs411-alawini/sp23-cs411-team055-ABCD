@@ -27,18 +27,18 @@ class ProcessCrimes extends React.Component {
   componentDidMount() {
     fetch(process.env.REACT_APP_SERVER_URL + "/reportCrime")
       .then(data => data.json())
-      .then(data => { console.log("data", data); this.setState({ crimes: data, }); });
+      .then(data => { console.log(data); this.setState({ crimes: data, });});
   }
 
   render() {
     let crimes = this.state.crimes.map((crime, index) => {
       return (
         <tr key={index}>
-          <td><Link to={`/admin/process-crime/${crime.ReportID}`}>{crime.ReportID}</Link></td>
-          <td>{crime.LOCATION}</td>
-          <td>{crime.DATE_OCC}</td>
-          <td>{crime.Crime}</td>
-          <td>{crime.Description}</td>
+          <td><Link to={`/admin/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
+          <td>{crime.daterpt}</td>
+          <td>{crime.dateocc}</td>
+          <td>{crime.crime}</td>
+          <td>{crime.description}</td>
         </tr>
       )
     });
@@ -51,14 +51,37 @@ class ProcessCrimes extends React.Component {
             <thead>
               <tr>
                 <td>Report ID</td>
+                <td>Date reported</td>
                 <td>Location</td>
-                <td>Date occurred</td>
                 <td>Crime type</td>
                 <td>Description</td>{/* This should be a short description within one line. Use '...' if content too long */}
+                <td>Fname</td>
+                <td>Lname</td>
+                <td>Phone</td>
+                <td>Email</td>
+                <td>Username</td>
               </tr>
             </thead>
             <tbody>
-              {crimes}
+              {
+                this.state.crimes.map((crime) => {
+                  console.log(crime)
+                  return (
+                    <tr>
+                      <td><Link to={`/admin/process-crime/${crime.ReportID}`}>{crime.ReportID}</Link></td>
+                      <td>{crime.DATE_OCC}</td>
+                      <td>{crime.LOCATION}</td>
+                      <td>{crime.Crime}</td>
+                      <td>{crime.Description}</td>
+                      <td>{crime.Fname}</td>
+                      <td>{crime.Lname}</td>
+                      <td>{crime.Phone}</td>
+                      <td>{crime.Email}</td>
+                      <td>{crime.Username}</td>
+                    </tr>
+                  )
+                })
+              }           
             </tbody>
           </table>
         </div>
@@ -68,3 +91,25 @@ class ProcessCrimes extends React.Component {
 }
 
 export default ProcessCrimes;
+
+/*
+{
+  this.state.crimes.map((crime) => {
+    console.log(crime)
+    return (
+      <div style={{ display: "flex"}}>
+        <td>{crime.ReportID}</td>
+        <td>{crime.DATE_OCC}</td>
+        <td>{crime.LOCATION}</td>
+        <td>{crime.Crime}</td>
+        <td>{crime.description}</td>
+        <td>{crime.Fname}</td>
+        <td>{crime.Lname}</td>
+        <td>{crime.Phone}</td>
+        <td>{crime.Email}</td>
+        <td>{crime.User}</td>
+      </div>
+    )
+  })
+}
+*/
