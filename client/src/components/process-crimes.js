@@ -34,11 +34,15 @@ class ProcessCrimes extends React.Component {
     let crimes = this.state.crimes.map((crime, index) => {
       return (
         <tr key={index}>
-          <td><Link to={`/admin/process-crime/${crime.reportid}`}>{crime.reportid}</Link></td>
-          <td>{crime.daterpt}</td>
-          <td>{crime.dateocc}</td>
-          <td>{crime.crime}</td>
-          <td>{crime.description}</td>
+          <td><Link to={`/admin/process-crime/${crime.ReportID}`}>{crime.ReportID}</Link></td>
+          <td>{crime.DATE_OCC}</td>
+          <td>{crime.LOCATION}</td>
+          <td>{crime.Crime}</td>
+          <td>{crime.Description}</td>
+          <td>{crime.Fname}</td>
+          <td>{crime.Lname}</td>
+          <td>{crime.Phone}</td>
+          <td>{crime.Email}</td>
         </tr>
       )
     });
@@ -59,29 +63,10 @@ class ProcessCrimes extends React.Component {
                 <td>Lname</td>
                 <td>Phone</td>
                 <td>Email</td>
-                <td>Username</td>
               </tr>
             </thead>
             <tbody>
-              {
-                this.state.crimes.map((crime) => {
-                  console.log(crime)
-                  return (
-                    <tr>
-                      <td><Link to={`/admin/process-crime/${crime.ReportID}`}>{crime.ReportID}</Link></td>
-                      <td>{crime.DATE_OCC}</td>
-                      <td>{crime.LOCATION}</td>
-                      <td>{crime.Crime}</td>
-                      <td>{crime.Description}</td>
-                      <td>{crime.Fname}</td>
-                      <td>{crime.Lname}</td>
-                      <td>{crime.Phone}</td>
-                      <td>{crime.Email}</td>
-                      <td>{crime.Username}</td>
-                    </tr>
-                  )
-                })
-              }           
+              {crimes}           
             </tbody>
           </table>
         </div>

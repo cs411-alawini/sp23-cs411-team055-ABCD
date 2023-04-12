@@ -21,7 +21,7 @@ class ADQ1 extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    alert(JSON.stringify(this.state.inputData));
+    console.log(JSON.stringify(this.state.inputData));
     fetch("http://localhost:3001/weaponsData", {
       method: "POST",
       headers: { 
@@ -34,7 +34,7 @@ class ADQ1 extends React.Component {
 
   handleSubmit2(event) {
     event.preventDefault();
-    alert(JSON.stringify(this.state.inputData2));
+    console.log(JSON.stringify(this.state.inputData2));
     fetch("http://localhost:3001/premisData", {
       method: "POST",
       headers: { 

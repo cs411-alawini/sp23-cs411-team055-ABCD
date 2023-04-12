@@ -67,7 +67,8 @@ class ProcessCrime extends React.Component {
         "Content-Type": "application/json" 
       },
       body: JSON.stringify(data),
-    });
+    })
+      .then(res => console.log(res.status));
   }
 
   delete() {
@@ -105,7 +106,7 @@ class ProcessCrime extends React.Component {
                     <td>{this.state.info.LOCATION}</td>
                   </tr>
                   <tr>
-                    <td>Date Occured</td>
+                    <td>Date Occurred</td>
                     <td>{this.state.info.DATE_OCC}</td>
                   </tr>
                   <tr>
