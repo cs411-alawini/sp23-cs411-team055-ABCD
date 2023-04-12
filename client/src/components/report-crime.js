@@ -35,7 +35,6 @@ class ReportCrime extends React.Component {
     Object.entries(this.infoRefs).forEach(([key, ref]) => {
       info[key] = ref.current.value;
     });
-    alert(JSON.stringify(info));
     console.log(JSON.stringify(info));
     fetch("http://localhost:3001/report", {
       method: "POST",

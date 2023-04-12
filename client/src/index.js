@@ -38,10 +38,11 @@ root.render(
         <Route exact path="/graph" element={<GraphPage navblocks={navblocks} />}></Route>
         <Route exact path="/area-report" element={<AreaReport navblocks={navblocks} />}></Route>
         <Route exact path="/report-crime" element={<ReportCrime navblocks={navblocks} />}></Route>
+        <Route exact path="/adq1" element={<ADQ1 navblocks={navblocks} />}></Route>
         <Route exact path="/admin" element={<Home navblocks={adminNavblocks} />}></Route>
         <Route exact path="/admin/process-crime" element={<ProcessCrimes navblocks={adminNavblocks} />}></Route>
         <Route exact path="/admin/process-crime/:reportid" element={<ProcessCrime navblocks={adminNavblocks} />}></Route>
-        <Route exact path="/adq1" element={<ADQ1 navblocks={navblocks} />}></Route>
+        <Route exact path="/admin/*" element={<NotFound navblocks={adminNavblocks} />}></Route>
         <Route exact path="*" element={<NotFound navblocks={navblocks} />}></Route>
       </Routes>
     </Router>
