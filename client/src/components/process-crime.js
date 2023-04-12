@@ -34,6 +34,14 @@ class ProcessCrime extends React.Component {
     fetch(process.env.REACT_APP_SERVER_URL + "/get-report/" + encodeURIComponent(this.props.params.reportid))
       .then(data => data.json())
       .then(data => this.setState({ info: data, }));
+    fetch(process.env.REACT_APP_SERVER_URL + "/get-last-submission/" + encodeURIComponent(this.props.params.reportid))
+      .then(data => data.json())
+      .then(data => {
+        Object.entries(data).forEach(([key, val]) => {
+          if (this.newInfo[key] === undefined) return;
+          this.newInfo[key].ref.current.value = val;
+        });
+      });
   }
 
   onSubmit(event) {
