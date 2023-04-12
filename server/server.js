@@ -169,7 +169,7 @@ app.get("/get-report/:ID", function(req, res) {
     if (err1) {
       console.log(err1)
     } else {
-      res.send(result1);
+      res.send(result1[0]);
     }
   });
 })

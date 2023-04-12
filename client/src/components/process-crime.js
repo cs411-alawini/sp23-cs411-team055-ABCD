@@ -17,7 +17,7 @@ class ProcessCrime extends React.Component {
       DATE_OCC: { ref: React.createRef(), name: "Date occurred", type: "string" },
       TIME_OCC: { ref: React.createRef(), name: "Time occurred", type: "string" },
       Rpt_Dist_No: { ref: React.createRef(), name: "Report district number", type: "int" },
-      Crm_Cd: { ref: React.createRef(), name: "Crime code", type: "string" },
+      Crm_Cd: { ref: React.createRef(), name: "Crime code", type: "int" },
       Vict_Age: { ref: React.createRef(), name: "Victim Age", type: "int" },
       Vict_Sex: { ref: React.createRef(), name: "Victim Sex", type: "string" },
       Vict_Descent: { ref: React.createRef(), name: "Victim Descent", type: "string" },
