@@ -142,3 +142,22 @@ db.query(before, [req.body.inputValue] ,(err, result) => {
         }
     });
 });
+
+app.post("/premisData", function(req, res) {
+  console.log(req.body)
+  var premisQuery = `
+    select p.Premis_Desc, count(c.DR_NO) as count
+    from crime c natural join weaponinfo w natural join premis p natural join statusinfo s
+    where Vict_Descent = ? AND s.Status = 'IC'
+    group by p.Premis_Cd
+    having 20 < ALL(select count(c.DR_NO))
+  `
+  db.query(premisQuery, [req.body.inputValue], (err1, result1) => {
+    if (err1) {
+      console.log(err1)
+    } else {
+      console.log(result1);
+      res.send(result1);
+    }
+  });
+})
