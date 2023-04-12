@@ -186,7 +186,7 @@ app.get("/get-last-submission/:ID", function(req, res) {
       console.log(err1)
     } else {
       console.log(result1);
-      res.send(result1);
+      res.send(result1[0]);
     }
   })
 
