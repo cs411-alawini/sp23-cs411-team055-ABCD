@@ -29,13 +29,11 @@ class ReportCrime extends React.Component {
   }
 
   handleSubmit(event) {
-    event.preventDefault();
-    console.log("HEY");
+    // event.preventDefault();  // Uncomment this line to prevent the page from refreshing
     let info = {};
     Object.entries(this.infoRefs).forEach(([key, ref]) => {
       info[key] = ref.current.value;
     });
-    alert(JSON.stringify(info));
     console.log(JSON.stringify(info));
     fetch("http://localhost:3001/report", {
       method: "POST",

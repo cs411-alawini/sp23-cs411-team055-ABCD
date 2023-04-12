@@ -12,20 +12,79 @@ class ProcessCrime extends React.Component {
     this.state = {
       info: {},
     }
+    this.newInfo = {
+      Date_Rptd: { ref: React.createRef(), name: "Date reported", type: "string" },
+      DATE_OCC: { ref: React.createRef(), name: "Date occurred", type: "string" },
+      TIME_OCC: { ref: React.createRef(), name: "Time occurred", type: "string" },
+      Rpt_Dist_No: { ref: React.createRef(), name: "Report district number", type: "int" },
+      Crm_Cd: { ref: React.createRef(), name: "Crime code", type: "string" },
+      Vict_Age: { ref: React.createRef(), name: "Victim Age", type: "int" },
+      Vict_Sex: { ref: React.createRef(), name: "Victim Sex", type: "string" },
+      Vict_Descent: { ref: React.createRef(), name: "Victim Descent", type: "string" },
+      Premis_Cd: { ref: React.createRef(), name: "Premis code", type: "string" },
+      Weapon_Used_Cd: { ref: React.createRef(), name: "Weapon used code", type: "string" },
+      Status: { ref: React.createRef(), name: "Status", type: "string" },
+      LOCATION: { ref: React.createRef(), name: "Location", type: "string" },
+      LAT: { ref: React.createRef(), name: "Latitude", type: "double" },
+      LON: { ref: React.createRef(), name: "Longitude", type: "double" },
+    }
   }
 
   componentDidMount() {
-    fetch(process.env.REACT_APP_SERVER_URL + "/get-report/" + encodeURIComponent(this.props.params))
+    fetch(process.env.REACT_APP_SERVER_URL + "/get-report/" + encodeURIComponent(this.props.params.reportid))
       .then(data => data.json())
       .then(data => this.setState({ info: data, }));
   }
 
+  onSubmit(event) {
+    event.preventDefault();  // Uncomment this line to prevent the page from refreshing
+    let data = { ReportID: this.props.params.reportid };
+    Object.entries(this.newInfo).forEach(([key, val], index) => {
+      data[key] = null;
+      if (val.ref === "") {
+        // Do nothing
+      } else if (val.type === "string") {
+        data[key] = val.ref.current.value;
+      } else if (val.type === "int") {
+        data[key] = parseInt(val.ref.current.value);
+      } else if (val.type === "double") {
+        data[key] = parseFloat(val.ref.current.value);
+      }
+    });
+    console.log(data);
+    fetch(process.env.REACT_APP_SERVER_URL + "/process-report/" + encodeURIComponent(this.props.params.reportid), {
+      method: "PUT",
+      headers: { 
+        "Content-Type": "application/json" 
+      },
+      body: JSON.stringify(data),
+    });
+  }
+
+  delete() {
+    console.log("Sending request to delete report...");
+    fetch(process.env.REACT_APP_SERVER_URL + "/del-report/" + encodeURIComponent(this.props.params.reportid), {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      },
+    });
+  }
+
   render() {
+    let newInfo = Object.entries(this.newInfo).map(([key, val], index) => {
+      return (
+        <div key={index}>
+          <label className="label">{val.name}</label>
+          <input className="input" ref={val.ref} placeholder={val.type}></input>
+        </div>
+      );
+    });
     return (
         <div id="process-crime">
             <Header navblocks={this.props.navblocks} current={1} />
             <section className="given-info">
-              <div className="title">Information provided</div>
+              <div className="title">Information Provided:</div>
               <table>
                 <tbody>
                   <tr>
@@ -60,7 +119,12 @@ class ProcessCrime extends React.Component {
               </table>
             </section>
             <section className="new-info">
-              <div className="title">Information needed</div>
+              <div className="title">Information Needed:</div>
+              <form onSubmit={e => this.onSubmit(e)}>
+                {newInfo}
+                <button className="submit" type="submit">Save</button>
+                <button className="submit" onClick={() => this.delete()}>Mark as resolved</button>
+              </form>
             </section>
         </div>
     );

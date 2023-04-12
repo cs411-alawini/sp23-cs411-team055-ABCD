@@ -27,7 +27,7 @@ class ProcessCrimes extends React.Component {
   componentDidMount() {
     fetch(process.env.REACT_APP_SERVER_URL + "/reportCrime")
       .then(data => data.json())
-      .then(data => { this.setState({ crimes: data, }); });
+      .then(data => { console.log("data", data); this.setState({ crimes: data, }); });
   }
 
   render() {
@@ -42,7 +42,6 @@ class ProcessCrimes extends React.Component {
         </tr>
       )
     });
-    console.log(crimes);
     return (
       <div id="process-crimes">
         <Header navblocks={this.props.navblocks} current={1} />
