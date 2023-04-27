@@ -1,4 +1,5 @@
 DELIMITER $$
+
 CREATE TRIGGER errorChecking
 AFTER INSERT ON selfreportcrime
 FOR EACH ROW
@@ -13,5 +14,6 @@ BEGIN
         SET err = 'INVALID';
         SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = 'Invalid Phone Number';
     END IF;
-END $$
+END$$
+
 DELIMITER ;

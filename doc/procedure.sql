@@ -1,3 +1,5 @@
+DELIMITER $$
+
 CREATE DEFINER=`root`@`%` PROCEDURE `ProcPremis`(IN weapontype int, IN agenew int)
 BEGIN
     DECLARE Premis_Cd_Var INT;
@@ -22,17 +24,17 @@ BEGIN
             LEAVE loop_0;
         END IF;
 
-        SELECT Premis_Desc INTO Premis_Desc_Var FROM premis WHERE Premis_Cd = Premis_Cd_Var;
-
         IF (weapontype = 106 or weapontype = 107) THEN
-            SELECT count(DR_NO) INTO Num_Crimes_Var
-            from crime c natural join weaponinfo w
-            where (c.Weapon_Used_Cd != 106 and c.Weapon_Used_Cd != 107)
-                and Vict_Age <= agenew and c.Premis_Cd = Premis_Cd_Var
+            SELECT count(DR_NO), Premis_Desc
+            INTO Num_Crimes_Var, Premis_Desc_Var
+            from crime c natural join premis p
+            where (c.Weapon_Used_Cd BETWEEN 100 AND 199)
+                and Vict_Age <= agenew and Premis_Cd = Premis_Cd_Var
             group by c.Premis_Cd;
         ELSE
-            SELECT count(DR_NO) INTO Num_Crimes_Var
-            from crime c natural join weaponinfo w
+            SELECT count(DR_NO), Premis_Desc
+            INTO Num_Crimes_Var, Premis_Desc_Var
+            from crime c natural join premis p
             where (c.Weapon_Used_Cd = weapontype)
                 and Vict_Age <= agenew and c.Premis_Cd = Premis_Cd_Var
             group by c.Premis_Cd;
@@ -43,5 +45,7 @@ BEGIN
 
     CLOSE premisCur;
 
-    SELECT * FROM premis_count WHERE Num_Crimes >= 500 ORDER BY Num_Crimes DESC;
-END
+    SELECT * FROM premis_count ORDER BY Num_Crimes DESC;
+END$$
+
+DELIMITER ;
