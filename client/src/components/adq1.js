@@ -71,8 +71,8 @@ class ADQ1 extends React.Component {
       <div id="process-crimes">
         <Header navblocks={this.props.navblocks} current={1} />
         <div style={{display: "flex", justifyContent: "space-around"}}>
-          {/* <div>
-              <section><h1>Premis Data</h1></section>
+          <div>
+              <section><h1>Premis Data by Race</h1></section>
               <br/>
               <form onSubmit={ e => this.handleSubmit2(e) }>
                 <input type="text" onChange={(e) => {this.setState({ inputData2: e.target.value })}}></input>
@@ -101,7 +101,7 @@ class ADQ1 extends React.Component {
                 </tbody>
               </table>
               </div>
-          </div> */}
+          </div>
           <div>
             <section><h1>Weaopon Data</h1></section>
             <br/>
@@ -134,7 +134,7 @@ class ADQ1 extends React.Component {
             </div>
           </div>
           <div>
-            <section><h1>Premis Data</h1></section>
+            <section><h1>Premis Data by Weapon</h1></section>
             <br/>
             <form onSubmit={ e => this.handleSubmit3(e) }>
               <input
