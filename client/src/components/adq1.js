@@ -103,7 +103,7 @@ class ADQ1 extends React.Component {
               </div>
           </div>
           <div>
-            <section><h1>Weaopon Data</h1></section>
+            <section><h1>Weapon Data</h1></section>
             <br/>
             <form onSubmit={ e => this.handleSubmit(e) }>
               <input type="text" onChange={(e) => {this.setState({ inputData: e.target.value })}}></input>
