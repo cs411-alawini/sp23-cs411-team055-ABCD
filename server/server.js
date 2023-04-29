@@ -159,6 +159,22 @@ app.post("/premisData", function(req, res) {
   });
 });
 
+app.post("/procpremis", function(req, res) {
+  console.log(req.body)
+  var premisQuery = `
+    CALL ProcPremis(?, ?);
+  `
+  db.query(premisQuery, [req.body.weapon, req.body.maxAge], (err1, result1) => {
+    if (err1) {
+      console.log(err1)
+      res.status(409).send();
+    } else {
+      console.log(result1);
+      res.send(result1[0]);
+    }
+  });
+});
+
 app.get("/get-report/:ID", function(req, res) {
   var getQuery = `
     select *

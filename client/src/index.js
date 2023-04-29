@@ -19,7 +19,7 @@ import "./index.css";
 
 let navblocks = [
   { link: "/", content: "Home", },
-  { link: "/graph", content: "Graph", },
+  { link: "/adq1", content: "Stats", },
   { link: "/area-report", content: "Area Report", },
   { link: "/report-crime", content: "Report Crime", },
 ];
